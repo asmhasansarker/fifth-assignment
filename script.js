@@ -1,8 +1,10 @@
-
-function searchedFood(){
+//---------------------------------------------------------
+// SEARCH FOOD AND API FETCH START
+//---------------------------------------------------------
+const searchedFood = () => {
     let searchFood = document.getElementById('search').value;
     if(searchFood.length == 1){
-        function getFoodDataByLetter(letter){
+        const getFoodDataByLetter = (letter) =>{
             const url =`https://www.themealdb.com/api/json/v1/1/search.php?f=${letter}`
             fetch(url)
             .then(res => res.json())
@@ -11,7 +13,7 @@ function searchedFood(){
         getFoodDataByLetter(searchFood);    
     }
     else{
-        function getFoodDataByWord(word){
+        const getFoodDataByWord = (word) => {
             const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${word}`
             fetch(url)
             .then(res => res.json())
@@ -21,9 +23,15 @@ function searchedFood(){
     }
     searchFood.innerText = ''; 
 }
+//---------------------------------------------------------
+// SEARCH FOOD AND API FETCH END
+//---------------------------------------------------------
 
+//---------------------------------------------------------
+// SAME CATEGORY FOODS AREA CODE START
+//---------------------------------------------------------
 
-function allFood(data){
+const allFood =(data) =>{
     let singleFoodDetails = document.getElementById('foodDetails');
     singleFoodDetails.innerHTML='';
     let foodsDiv = document.getElementById('foodsDiv');
@@ -33,7 +41,7 @@ function allFood(data){
         alert("You enter a wrong keyword. Please Enter a correct keyword. ");
     }
     else{
-        foodList.forEach(foodItem => {
+        foodList.forEach( foodItem => {
             let foodImage = foodItem.strMealThumb;
             let itemName = foodItem.strMeal; 
             const foodDiv = document.createElement('div');
@@ -48,39 +56,24 @@ function allFood(data){
             foodsDiv.appendChild(foodDiv);
         });
     }
-    
-
-
-    // foodList.forEach(foodItem => {
-    //     let foodImage = foodItem.strMealThumb;
-    //     let itemName = foodItem.strMeal; 
-    //     const foodDiv = document.createElement('div');
-    //     foodDiv.className = "food";
-    //     const foodInfo =`
-    //         <div onclick="singleFoodDetails('${foodItem.idMeal}')">
-    //             <img src="${foodImage}">
-    //             <h3>${itemName}</h3> 
-    //         </div>       
-    //     `
-    //     foodDiv.innerHTML = foodInfo;
-    //     foodsDiv.appendChild(foodDiv);
-        
-        
-    // });
-    
-
-
 }
 
+//---------------------------------------------------------
+// SAME CATEGORY FOODS AREA CODE END
+//---------------------------------------------------------
 
-function singleFoodDetails(foodId){
+//---------------------------------------------------------
+// SINGLE FOOD AREA CODE START
+//---------------------------------------------------------
+
+const singleFoodDetails = (foodId) => {
     const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${foodId}`
     fetch(url)
     .then(res =>res.json())
     .then(foodData =>showSingleFoodDetails(foodData))
 }
 
-function showSingleFoodDetails(foodDetails){ 
+const showSingleFoodDetails = (foodDetails) => { 
     let singleFoodDetails = document.getElementById('foodDetails');
     singleFoodDetails.innerHTML='';
     const foodDetailsArray = foodDetails.meals;
@@ -104,59 +97,11 @@ function showSingleFoodDetails(foodDetails){
             <li>${foodDetailsArray[0].strIngredient9}</li>
         </ul>
     `
+   
     foodDetailsDiv.innerHTML = foodDetailsInfo;
     singleFoodDetails.appendChild(foodDetailsDiv);
 } 
 
-
-
-
-
-
-// function foodDetails(food){
-
-// }
-
-// fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
-// .then(res => res.json())
-// .then(data => displayFoods(data));
-
-// const displayFoods = foods =>{
-//     console.log(foods.categories)
-//     let allFoods = foods.categories;
-//     allFoods.forEach(food => {
-//         console.log(food.strCategory);
-//     });
-    
-// }
-
-//---------------------------
-// Food Details Code Start
-//---------------------------
-
-
-
-// fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata')
-// .then(res => res.json())
-// .then(data => displayFoods(data));
-
-// const displayFoods = foods =>{
-//     console.log(foods.meals)
-//     let allFoods = foods.meals;
-//     allFoods.forEach(food => {
-//         console.log(food.strMeal)
-//         console.log(food.strIngredient1);
-//         console.log(food.strIngredient2);
-//         console.log(food.strIngredient3);
-//         console.log(food.strIngredient4);
-//         console.log(food.strIngredient5);
-//         console.log(food.strIngredient6);
-//         console.log(food.strIngredient7);
-//         console.log(food.strIngredient8);
-//     });
-    
-// }
-
-//---------------------------
-// Food Details Code End
-//---------------------------
+//---------------------------------------------------------
+// SINGLE FOOD AREA CODE END
+//---------------------------------------------------------
