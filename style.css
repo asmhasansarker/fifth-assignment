@@ -1,0 +1,52 @@
+
+.search-area{
+    display: flex;
+    margin: 100px 400px;
+}
+
+input[type="text"]{
+    font-size: 24px;
+    padding: 10px;
+
+}
+button{
+    font-size: 24px;
+    padding: 10px;
+    background: coral;
+    border: none;
+    border-radius:0 5px 5px 0;
+}
+
+#foodDetails{
+    padding:10px;
+    text-align: left;
+    width:400px;
+    height: auto;
+    margin: 0 auto;
+}
+#foodDetails ul li{
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.foodDetails img{
+    width:390px;
+    border-radius: 10px;
+}
+
+#foodsDiv{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap:30px;
+}
+.food{
+    border:1px solid black;
+    border-radius: 20px;
+    padding:20px;
+    text-align: center;
+    width:200px;
+    height: auto;
+}
+.food img{
+    width:195px;
+}
